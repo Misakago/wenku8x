@@ -22,7 +22,7 @@ jobs:
       run: flutter pub get
 
     - name: Run
-      run: flutter run
+      run: flutter run -d linux
 
     - name: Build APK
       run: flutter build apk --release --target-platform=android-arm64
