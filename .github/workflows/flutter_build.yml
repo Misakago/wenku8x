@@ -10,17 +10,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    container:
-      image: cirrusci/flutter:3.13.6
-
     steps:
     - uses: actions/checkout@v2
 
-    - name: Get dependencies
+    - name: Setup Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.13.6' # 使用这个操作来安装指定版本的Flutter
+
+    - name: Install dependencies
       run: flutter pub get
 
     - name: Run tests
-      run: flutter run
+      run: flutter test
 
     - name: Build APK
       run: flutter build apk --release --target-platform=android-arm64
